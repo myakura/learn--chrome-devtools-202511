@@ -42,9 +42,9 @@ exports.handler = async (event) => {
         statusCode: 200,
         body: JSON.stringify([
           { name: "Jane Backend", email: "jane@example.com", company: "DB Layers Inc." },
-          { name: "Kai Infra", email: "kai@ops.dev", company: "SRE Works" },
-          { name: "Mika API", email: "mika@api.run", company: "JSON First LLC" },
-          { name: "Taku Logs", email: "taku@logs.dev", company: "Observa Corp" },
+          { name: "Kai Infra", email: "kai@example.com", company: "SRE Works" },
+          { name: "Mika API", email: "mika@example.com", company: "JSON First LLC" },
+          { name: "Taku Logs", email: "taku@example.com", company: "Observa Corp" },
         ]),
       };
     }
