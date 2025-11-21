@@ -6,10 +6,11 @@ exports.handler = async (event) => {
 
   // Slow path simulates specific steps with Server-Timing
   if (method === "GET" && type === "slow") {
+    const jitter = (base) => Math.max(20, Math.round(base + (Math.random() * 2 - 1) * base * 0.2)); // ±20%
     const steps = [
-      { name: "db", desc: "Database Query", dur: 300 },
-      { name: "ext", desc: "External API", dur: 800 },
-      { name: "proc", desc: "Processing", dur: 50 },
+      { name: "db", desc: "Database Query", dur: jitter(300) },
+      { name: "ext", desc: "External API", dur: jitter(800) },
+      { name: "proc", desc: "Processing", dur: jitter(50) },
     ];
 
     for (const step of steps) {
@@ -20,12 +21,14 @@ exports.handler = async (event) => {
       .map((s) => `${s.name};desc="${s.desc}";dur=${s.dur}`)
       .join(", ");
 
+    const total = steps.reduce((sum, s) => sum + s.dur, 0);
+
     return {
       statusCode: 200,
       headers: {
         "Server-Timing": serverTiming,
       },
-      body: JSON.stringify({ message: "Heavy process finished", total_time: "approx 1150ms" }),
+      body: JSON.stringify({ message: "Heavy process finished", total_time: `${total}ms (simulated)` }),
     };
   }
 
