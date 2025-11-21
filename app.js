@@ -38,12 +38,20 @@ function renderUsers(users) {
 if (usersBtn && usersList && usersStatus) {
   usersBtn.addEventListener("click", async () => {
     usersList.innerHTML = "";
-    setStatus(usersStatus, "Loading...");
+    setStatus(usersStatus, "4リクエスト実行中... (ウォーターフォールを確認)");
     try {
-      const res = await fetch("/.netlify/functions/api?type=users");
-      const data = await res.json();
-      setStatus(usersStatus, `取得成功 (${data.length} 件)`);
-      renderUsers(data);
+      const pages = [1, 2, 3, 4];
+      const aggregated = [];
+
+      for (const page of pages) {
+        setStatus(usersStatus, `Fetching page ${page}/4 (per_page=10)`);
+        const res = await fetch(`/.netlify/functions/api?type=users&per_page=10&page=${page}`);
+        const data = await res.json();
+        aggregated.push(...data);
+      }
+
+      setStatus(usersStatus, `取得成功 (${aggregated.length} 件, 4 リクエスト)`);
+      renderUsers(aggregated);
     } catch (err) {
       console.error(err);
       setStatus(usersStatus, "取得に失敗しました");
