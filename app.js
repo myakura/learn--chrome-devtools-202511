@@ -66,8 +66,12 @@ if (triggerCors && errorBox) {
   triggerCors.addEventListener("click", async () => {
     setStatus(errorBox, "外部サイトへリクエスト中...");
     try {
-      await fetch("https://example.com/not-allowed", { mode: "cors" });
-      setStatus(errorBox, "CORS エラーを再現できませんでした");
+      const res = await fetch("https://thriving-malabi-b8f415.netlify.app/.netlify/functions/hello", {
+        mode: "cors",
+      });
+      const data = await res.json();
+      const msg = data?.message ? `成功: ${data.message}` : "成功しました (message なし)";
+      setStatus(errorBox, msg);
     } catch (err) {
       console.warn("CORS expected error", err);
       setStatus(errorBox, "CORSエラーが発生しました（Network/Issuesパネルを確認してください）");
