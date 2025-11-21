@@ -6,13 +6,17 @@ const trigger500 = document.getElementById("trigger-500");
 const triggerCors = document.getElementById("trigger-cors");
 const postForm = document.getElementById("post-form");
 const postLog = document.getElementById("post-log");
+const runSlowBtn = document.getElementById("run-slow");
+const slowStatus = document.getElementById("slow-status");
 
 // Utility to update status text safely
 function setStatus(el, message) {
+  if (!el) return;
   el.textContent = message;
 }
 
 function renderUsers(users) {
+  if (!usersList) return;
   usersList.innerHTML = users
     .map(
       (u) => `
@@ -103,6 +107,26 @@ if (postForm && postLog) {
     } catch (err) {
       console.error(err);
       setStatus(postLog, "送信に失敗しました");
+    }
+  });
+}
+
+// Server-Timing slow demo
+if (runSlowBtn && slowStatus) {
+  runSlowBtn.addEventListener("click", async () => {
+    const start = performance.now();
+    setStatus(slowStatus, "複雑な処理を実行中... (Timing タブで観察)");
+    try {
+      const res = await fetch("/.netlify/functions/api?type=slow");
+      const data = await res.json();
+      const elapsed = Math.round(performance.now() - start);
+      setStatus(
+        slowStatus,
+        `${data.message} | 実測: ${elapsed}ms | DevTools の Network > Timing を開いて dur を確認`
+      );
+    } catch (err) {
+      console.error(err);
+      setStatus(slowStatus, "リクエストに失敗しました");
     }
   });
 }

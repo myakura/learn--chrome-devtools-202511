@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server-Timing デモ | Chrome DevTools Network</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Chrome DevTools 勉強会</p>
+      <h1>ボトルネック特定 (Server-Timing)</h1>
+      <p class="lede">複数の重い処理をシミュレーションし、Server-Timing で可視化します。</p>
+      <p class="muted" style="margin-top:10px;">← <a href="/">トップに戻る</a></p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">D. Performance</p>
+          <h2>ボトルネック特定 (Server-Timing)</h2>
+          <p class="muted">/.netlify/functions/api?type=slow を呼び出し、Timing タブで処理内訳を確認。</p>
+        </div>
+        <button id="run-slow" class="btn primary">複雑な処理を実行 (Slow)</button>
+      </div>
+      <div id="slow-status" class="log" aria-live="polite">実行して結果を確認</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Network > Timing タブで Server-Timing の各 dur を確認してください。AI アシスタントにも質問してみましょう。</p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
