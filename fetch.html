@@ -28,7 +28,10 @@
           <h2>ユーザーリスト取得</h2>
           <p class="muted">/.netlify/functions/api?type=users を呼び出します。遅延入りレスポンスで Timing を確認。</p>
         </div>
-        <button id="fetch-users" class="btn primary">ユーザーリスト取得</button>
+        <div class="actions">
+          <button id="fetch-users-default" class="btn primary">5件取得 (デフォルト)</button>
+          <button id="fetch-users-bulk" class="btn ghost">10件×4回取得</button>
+        </div>
       </div>
       <div id="users-status" class="status"></div>
       <div id="users-list" class="grid"></div>

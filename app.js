@@ -1,4 +1,5 @@
-const usersBtn = document.getElementById("fetch-users");
+const usersBtnDefault = document.getElementById("fetch-users-default");
+const usersBtnBulk = document.getElementById("fetch-users-bulk");
 const usersList = document.getElementById("users-list");
 const usersStatus = document.getElementById("users-status");
 const errorBox = document.getElementById("error-box");
@@ -34,8 +35,24 @@ function renderUsers(users) {
     .join("");
 }
 
-if (usersBtn && usersList && usersStatus) {
-  usersBtn.addEventListener("click", async () => {
+if (usersBtnDefault && usersList && usersStatus) {
+  usersBtnDefault.addEventListener("click", async () => {
+    usersList.innerHTML = "";
+    setStatus(usersStatus, "Loading... (デフォルト5件)");
+    try {
+      const res = await fetch("/.netlify/functions/api?type=users");
+      const data = await res.json();
+      setStatus(usersStatus, `取得成功 (${data.length} 件)`);
+      renderUsers(data);
+    } catch (err) {
+      console.error(err);
+      setStatus(usersStatus, "取得に失敗しました");
+    }
+  });
+}
+
+if (usersBtnBulk && usersList && usersStatus) {
+  usersBtnBulk.addEventListener("click", async () => {
     usersList.innerHTML = "";
     setStatus(usersStatus, "4リクエスト実行中... (ウォーターフォールを確認)");
     try {
