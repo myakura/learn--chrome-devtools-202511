@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>エラー診断デモ | Chrome DevTools Network</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Chrome DevTools 勉強会</p>
+      <h1>Error Diagnosis Demo</h1>
+      <p class="lede">500 と CORS ブロックを分けて確認。Issues パネルで詳細をチェック。</p>
+      <div class="badges">
+        <span class="badge">500</span>
+        <span class="badge">CORS</span>
+        <span class="badge">Issues Panel</span>
+      </div>
+      <p class="muted" style="margin-top:10px;">← <a href="/">トップに戻る</a></p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">B. Error Diagnosis</p>
+          <h2>500 &amp; CORS エラーデモ</h2>
+          <p class="muted">500 は Functions /type=error、CORS は example.com でブラウザ側ブロック。</p>
+        </div>
+        <div class="actions">
+          <button id="trigger-500" class="btn warn">500エラーを発生</button>
+          <button id="trigger-cors" class="btn ghost">CORSエラーを発生</button>
+        </div>
+      </div>
+      <div id="error-box" class="error-box" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Network / Issues / Console を開いてそれぞれの挙動を確認してください。</p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

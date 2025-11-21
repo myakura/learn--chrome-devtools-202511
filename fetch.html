@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ユーザー取得デモ | Chrome DevTools Network</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Chrome DevTools 勉強会</p>
+      <h1>Data Fetch Demo</h1>
+      <p class="lede">GET / Timing / cURL の確認用。レスポンス遅延を観察してください。</p>
+      <div class="badges">
+        <span class="badge">GET</span>
+        <span class="badge">Timing</span>
+        <span class="badge">cURL</span>
+      </div>
+      <p class="muted" style="margin-top:10px;">← <a href="/">トップに戻る</a></p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">A. Data Fetch</p>
+          <h2>ユーザーリスト取得</h2>
+          <p class="muted">/.netlify/functions/api?type=users を呼び出します。遅延入りレスポンスで Timing を確認。</p>
+        </div>
+        <button id="fetch-users" class="btn primary">ユーザーリスト取得</button>
+      </div>
+      <div id="users-status" class="status"></div>
+      <div id="users-list" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Network / Timing を開いて fetch を観察してください。</p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

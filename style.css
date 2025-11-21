@@ -159,6 +159,35 @@ p {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
+.nav-grid {
+  margin-top: 0;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.link-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.link-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  border-color: rgba(93, 208, 255, 0.4);
+}
+
+.pill {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .user-card {
   border: 1px solid var(--border);
   border-radius: 12px;

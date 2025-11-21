@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POST デモ | Chrome DevTools Network</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Chrome DevTools 勉強会</p>
+      <h1>POST / Edit &amp; Resend Demo</h1>
+      <p class="lede">Payload を書き換えて再送信する練習。レスポンスで受信データを確認。</p>
+      <div class="badges">
+        <span class="badge">POST</span>
+        <span class="badge">Edit &amp; Resend</span>
+        <span class="badge">JSON</span>
+      </div>
+      <p class="muted" style="margin-top:10px;">← <a href="/">トップに戻る</a></p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">C. Data Send</p>
+          <h2>POST / Edit &amp; Resend</h2>
+          <p class="muted">/.netlify/functions/api に JSON を送信。レスポンスをログします。</p>
+        </div>
+      </div>
+      <form id="post-form" class="form">
+        <div class="field">
+          <label for="name">名前</label>
+          <input id="name" name="name" type="text" placeholder="例: Jane Backend" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="例: jane@example.com" required />
+        </div>
+        <button type="submit" class="btn primary">送信</button>
+      </form>
+      <div class="log" id="post-log" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Network / Payload / Preview を開いて Edit &amp; Resend を試してください。</p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
