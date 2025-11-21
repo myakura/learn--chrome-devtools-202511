@@ -55,7 +55,7 @@ exports.handler = async (event) => {
   if (method === "GET") {
     if (type === "users") {
       const params = event.queryStringParameters || {};
-      const perPageRaw = parsePositiveInt(params.per_page) || USERS.length;
+      const perPageRaw = parsePositiveInt(params.per_page) || 5;
       const pageSize = Math.min(perPageRaw, USERS.length); // if too large, return all
 
       if (pageSize === USERS.length) {
