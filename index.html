@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chrome DevTools Network Demo</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Chrome DevTools 勉強会</p>
+      <h1>Network パネル徹底デモ</h1>
+      <p class="lede">リクエスト解析・レスポンス書き換え・再送信・CORS診断を一気に試せるサンプル。</p>
+      <div class="badges">
+        <span class="badge">Netlify Functions</span>
+        <span class="badge">Fetch API</span>
+        <span class="badge">CORS / 500</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Section A -->
+    <section class="card">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">A. Data Fetch</p>
+          <h2>ユーザーリスト取得</h2>
+          <p class="muted">GET / Timing / cURL のデモ。レスポンス遅延を確認してみてください。</p>
+        </div>
+        <button id="fetch-users" class="btn primary">ユーザーリスト取得</button>
+      </div>
+      <div id="users-status" class="status"></div>
+      <div id="users-list" class="grid"></div>
+    </section>
+
+    <!-- Section B -->
+    <section class="card">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">B. Error Diagnosis</p>
+          <h2>500 &amp; CORS エラーデモ</h2>
+          <p class="muted">Network/Issues パネルでリクエストとブロック理由を観察。</p>
+        </div>
+        <div class="actions">
+          <button id="trigger-500" class="btn warn">500エラーを発生</button>
+          <button id="trigger-cors" class="btn ghost">CORSエラーを発生</button>
+        </div>
+      </div>
+      <div id="error-box" class="error-box" aria-live="polite"></div>
+    </section>
+
+    <!-- Section C -->
+    <section class="card">
+      <div class="card__header">
+        <div>
+          <p class="eyebrow">C. Data Send</p>
+          <h2>POST / Edit &amp; Resend</h2>
+          <p class="muted">Payload を書き換えて再送信する練習用フォーム。</p>
+        </div>
+      </div>
+      <form id="post-form" class="form">
+        <div class="field">
+          <label for="name">名前</label>
+          <input id="name" name="name" type="text" placeholder="例: Jane Backend" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="例: jane@example.com" required />
+        </div>
+        <button type="submit" class="btn primary">送信</button>
+      </form>
+      <div class="log" id="post-log" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>DevTools で Network / Issues / Console / Sources を開きながら各ボタンを試してください。</p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
