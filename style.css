@@ -233,7 +233,7 @@ input:focus {
   border: 1px solid rgba(93, 208, 255, 0.35);
   min-height: 44px;
   white-space: pre-wrap;
-  font-family: "SFMono-Regular", Consolas, Monaco, monospace;
+  font-family: monospace;
   font-size: 14px;
 }
 
