@@ -2,7 +2,6 @@ const usersBtn = document.getElementById("fetch-users");
 const usersList = document.getElementById("users-list");
 const usersStatus = document.getElementById("users-status");
 const errorBox = document.getElementById("error-box");
-const trigger500 = document.getElementById("trigger-500");
 const triggerCors = document.getElementById("trigger-cors");
 const postForm = document.getElementById("post-form");
 const postLog = document.getElementById("post-log");
@@ -55,24 +54,6 @@ if (usersBtn && usersList && usersStatus) {
     } catch (err) {
       console.error(err);
       setStatus(usersStatus, "取得に失敗しました");
-    }
-  });
-}
-
-// 500 error demo
-if (trigger500 && errorBox) {
-  trigger500.addEventListener("click", async () => {
-    setErrorState(errorBox, false);
-    setStatus(errorBox, "リクエスト送信中...");
-    try {
-      const res = await fetch("/.netlify/functions/api?type=error");
-      const body = await res.json().catch(() => ({}));
-      setErrorState(errorBox, true);
-      setStatus(errorBox, `サーバーエラーが発生しました (500) - ${body.error || "Error"}`);
-    } catch (err) {
-      console.error(err);
-      setErrorState(errorBox, true);
-      setStatus(errorBox, "リクエストに失敗しました");
     }
   });
 }

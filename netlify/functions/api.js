@@ -73,16 +73,6 @@ exports.handler = async (event) => {
         body: JSON.stringify(picked),
       };
     }
-
-    if (type === "error") {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({
-          error: "Critical DB Failure",
-          message: "Connection refused",
-        }),
-      };
-    }
   }
 
   if (method === "POST") {

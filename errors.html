@@ -15,7 +15,7 @@
     <div class="hero__content">
       <p class="eyebrow">Chrome DevTools for Backend Developers</p>
       <h1>Error Diagnosis Demo</h1>
-      <p class="lede">500 と CORS ブロックを分けて確認。Issues パネルで詳細をチェック。</p>
+      <p class="lede">CORS ブロックを再現し、Issues パネルで詳細をチェック。</p>
       <p class="muted" style="margin-top:10px;">← <a href="/">トップに戻る</a></p>
     </div>
   </header>
@@ -25,12 +25,11 @@
       <div class="card__header">
         <div>
           <p class="eyebrow">B. Error Diagnosis</p>
-          <h2>500 &amp; CORS エラーデモ</h2>
-          <p class="muted">500 は Functions /type=error、CORS は外部サイトでブラウザ側ブロック。</p>
+          <h2>CORS エラーデモ</h2>
+          <p class="muted">外部サイトへのリクエストでブラウザ側の CORS ブロックを確認します。</p>
         </div>
         <div class="actions">
-          <button id="trigger-500" class="btn warn">500エラーを発生</button>
-          <button id="trigger-cors" class="btn ghost">CORSエラーを発生</button>
+          <button id="trigger-cors" class="btn warn">CORSエラーを発生</button>
         </div>
       </div>
       <div id="error-box" class="log" aria-live="polite"></div>
