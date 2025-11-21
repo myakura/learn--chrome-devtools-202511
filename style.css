@@ -197,16 +197,6 @@ p {
   margin-top: 6px;
 }
 
-.error-box {
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 10px;
-  background: rgba(255, 107, 107, 0.12);
-  border: 1px solid rgba(255, 107, 107, 0.4);
-  min-height: 22px;
-  color: #ffdfe0;
-}
-
 .form {
   display: grid;
   gap: 14px;
@@ -245,6 +235,12 @@ input:focus {
   white-space: pre-wrap;
   font-family: "SFMono-Regular", Consolas, Monaco, monospace;
   font-size: 14px;
+}
+
+.log.error {
+  background: rgba(255, 107, 107, 0.12);
+  border-color: rgba(255, 107, 107, 0.4);
+  color: #ffdfe0;
 }
 
 .footer {
