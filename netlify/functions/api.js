@@ -1,16 +1,5 @@
-const fs = require("fs");
-const path = require("path");
-
+const USERS = require("./users.json");
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const USERS = (() => {
-  try {
-    const filePath = path.join(__dirname, "users.json");
-    const raw = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
-})();
 
 exports.handler = async (event) => {
   const method = event.httpMethod;
